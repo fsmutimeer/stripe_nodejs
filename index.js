@@ -6,6 +6,7 @@ const customerRoute = require('./routes/core_resourses/customer');
 const balanceRoute = require('./routes/core_resourses/balance');
 const balanceTransactionsRoute = require('./routes/core_resourses/balance_transactions');
 const chargesRoute = require('./routes/core_resourses/charges');
+const disputesRoute = require('./routes/core_resourses/disputes');
 
 
 const port = process.env.PORT || 7000;
@@ -21,5 +22,6 @@ app.use(`${api}/customer`, customerRoute);
 app.use(`${api}/balance`, balanceRoute);
 app.use(`${api}/balance_transactions`, balanceTransactionsRoute);
 app.use(`${api}/charges`, chargesRoute);
+app.use(`${api}/disputes`, disputesRoute);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
