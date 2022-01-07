@@ -1,7 +1,9 @@
 const express = require('express');
 require('dotenv').config();
 //routes
+//
 const customerRoute = require('./routes/core_resourses/customer');
+const balanceRoute = require('./routes/core_resourses/balance');
 
 
 const port = process.env.PORT || 7000;
@@ -14,5 +16,6 @@ app.get('/', (req, res, next) => {
 });
 
 app.use(`${api}/customer`, customerRoute);
+app.use(`${api}/balance`, balanceRoute);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
