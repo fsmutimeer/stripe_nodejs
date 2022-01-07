@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 //routes
-const customerRoute = require('./routes/customer')
+const customerRoute = require('./routes/core_resourses/customer');
 
 
 const port = process.env.PORT || 7000;
