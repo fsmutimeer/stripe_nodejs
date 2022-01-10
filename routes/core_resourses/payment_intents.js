@@ -3,23 +3,6 @@ require('dotenv/config')
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.SK);
 
-// POST 
-// /v1/payment_intents
-//    GET 
-// /v1/payment_intents/:id
-//   POST 
-// /v1/payment_intents/:id
-//   POST 
-// /v1/payment_intents/:id/confirm
-//   POST 
-// /v1/payment_intents/:id/capture
-//   POST 
-// /v1/payment_intents/:id/cancel
-//    GET 
-// /v1/payment_intents
-
-
-
 
 router.get('/view', async(req, res) => {
     try {
