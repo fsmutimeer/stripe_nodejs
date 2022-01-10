@@ -9,6 +9,7 @@ const chargesRoute = require('./routes/core_resourses/charges');
 const disputesRoute = require('./routes/core_resourses/disputes');
 const eventsRoute = require('./routes/core_resourses/events');
 const filesRoute = require('./routes/core_resourses/files');
+const fileLinkRoute = require('./routes/core_resourses/');
 
 
 const port = process.env.PORT || 7000;
