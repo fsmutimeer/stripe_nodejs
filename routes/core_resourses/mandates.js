@@ -2,10 +2,6 @@ const router = require('express').Router();
 require('dotenv/config')
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.SK);
-const fs = require('fs');
-
-
-
 
 router.get('/view/:id', async(req, res) => {
     try {

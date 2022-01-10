@@ -10,6 +10,7 @@ const disputesRoute = require('./routes/core_resourses/disputes');
 const eventsRoute = require('./routes/core_resourses/events');
 const filesRoute = require('./routes/core_resourses/files');
 const fileLinkRoute = require('./routes/core_resourses/file_links');
+const mandateRoute = require('./routes/core_resourses/mandates');
 
 
 const port = process.env.PORT || 7000;
@@ -29,5 +30,6 @@ app.use(`${api}/disputes`, disputesRoute);
 app.use(`${api}/events`, eventsRoute);
 app.use(`${api}/files`, filesRoute);
 app.use(`${api}/file_link`, fileLinkRoute);
+app.use(`${api}/mandates`, mandateRoute);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
