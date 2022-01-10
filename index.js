@@ -12,6 +12,7 @@ const filesRoute = require('./routes/core_resourses/files');
 const fileLinkRoute = require('./routes/core_resourses/file_links');
 const mandateRoute = require('./routes/core_resourses/mandates');
 const paymentIntents = require('./routes/core_resourses/payment_intents');
+const setupIntents = require('./routes/core_resourses/setup_intents');
 
 
 const port = process.env.PORT || 7000;
@@ -33,5 +34,6 @@ app.use(`${api}/files`, filesRoute);
 app.use(`${api}/file_link`, fileLinkRoute);
 app.use(`${api}/mandates`, mandateRoute);
 app.use(`${api}/payment_intents`, paymentIntents);
+app.use(`${api}/setup_intents`, setupIntents);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
