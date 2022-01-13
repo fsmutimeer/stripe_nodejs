@@ -22,6 +22,7 @@ const priceRoute = require('./routes/price/_price');
 const couponRoute = require('./routes/coupon/_coupon');
 const subscriptionsRoute = require('./routes/subscription/_subscription');
 const subscriptionItemRoute = require('./routes/subscription/_subscription_items');
+const subscriptionScheduleRoute = require('./routes/subscription/_subscription_schedule');
 
 
 const port = process.env.PORT || 7000;
@@ -52,6 +53,7 @@ app.use(`${api}/products`, productRoute);
 app.use(`${api}/prices`, priceRoute);
 app.use(`${api}/coupon`, couponRoute);
 app.use(`${api}/subscriptions`, subscriptionsRoute);
-app.use(`${api}/subscriptionItems`, subscriptionItemRoute);
+app.use(`${api}/subscription_items`, subscriptionItemRoute);
+app.use(`${api}/subscription_schedule`, subscriptionScheduleRoute);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
