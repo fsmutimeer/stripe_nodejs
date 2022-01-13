@@ -57,5 +57,68 @@ router.delete('/delete/:id', async(req, res) => {
 
     }
 });
+//source
+router.post('/:id/sources', async(req, res) => {
+    try {
+        const card = await stripe.customers.createSource(
+            req.params.id, { source: req.body.source }
+        );
+        res.status(201).json(card);
+    } catch (error) {
+        console.log(error)
+
+    }
+});
+router.get('/:customer_id/sources/:source_id', async(req, res) => {
+    try {
+        const card = await stripe.customers.retrieveSource(
+            req.params.customer_id,
+            req.params.source_id
+        );
+        res.status(200).json(card);
+    } catch (error) {
+        console.log(error)
+
+    }
+});
+router.post('/:customer_id/sources/:source_id', async(req, res) => {
+    try {
+        const card = await stripe.customers.updateSource(
+            req.params.customer_id,
+            req.params.source_id,
+            req.body
+        );
+
+        res.status(200).json(card);
+    } catch (error) {
+        console.log(error)
+
+    }
+});
+router.post('/:customer_id/sources/:source_id', async(req, res) => {
+    try {
+        const deleted = await stripe.customers.deleteSource(
+            req.params.customer_id,
+            req.params.source_id,
+        );
+        res.json(deleted);
+    } catch (error) {
+        console.log(error)
+
+    }
+});
+router.get('/:customer_id/sources?object=card', async(req, res) => {
+    try {
+        const cards = await stripe.customers.listSources(
+            req.params.customer_id, { object: 'card' }
+        );
+        res.json(cards);
+    } catch (error) {
+        console.log(error)
+
+    }
+});
+
+
 
 module.exports = router;
