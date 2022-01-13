@@ -6,12 +6,13 @@ const stripe = Stripe(process.env.SK);
 
 router.post('/create', async(req, res) => {
     try {
-        const subscription = await stripe.subscriptions.create({
-            customer: req.body.customer_id,
-            items: [
-                { price: req.body.price },
-            ],
-        });
+        // const subscription = await stripe.subscriptions.create({
+        //     customer: req.body.customer_id,
+        //     items: [
+        //         { price: req.body.price },
+        //     ],
+        // });
+        const subscription = await stripe.subscriptions.create(req.body);
         res.json(subscription);
     } catch (error) {
         console.log(error)

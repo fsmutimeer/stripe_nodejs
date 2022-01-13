@@ -7,8 +7,7 @@ const stripe = Stripe(process.env.SK);
 router.post('/create', async(req, res) => {
     try {
         const product = await stripe.products.create(req.body);
-
-        res.json(product);
+        res.status(201).json(product);
     } catch (error) {
         console.log(error)
 
