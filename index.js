@@ -17,6 +17,7 @@ const setupAttempts = require('./routes/core_resourses/setup_attempts');
 const refundRoute = require('./routes/core_resourses/_refund');
 const tokensRoute = require('./routes/core_resourses/_tokens');
 const paymentRoute = require('./routes/payment/payment');
+const productRoute = require('./routes/products/_products');
 
 
 const port = process.env.PORT || 7000;
@@ -43,5 +44,6 @@ app.use(`${api}/setup_attempts`, setupAttempts);
 app.use(`${api}/refunds`, refundRoute);
 app.use(`${api}/tokens`, tokensRoute);
 app.use(`${api}/payment`, paymentRoute);
+app.use(`${api}/products`, productRoute);
 
 app.listen(port, () => console.log(`stripe server is running at http://localhost:${port}`))
