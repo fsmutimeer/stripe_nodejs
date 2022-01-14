@@ -2,6 +2,7 @@ const router = require('express').Router();
 require('dotenv/config')
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.SK);
+const { v4: uuidv4 } = require('uuid');
 
 
 router.get('/view', async(req, res) => {
@@ -30,8 +31,8 @@ router.post('/create', async(req, res) => {
             currency: req.body.currency,
             source: req.body.source,
             description: req.body.description,
-            idempotencyKey: uuidv4()
-        });
+            //idempotencyKey: uuidv4()
+        }, { idempotencyKey: uuidv4() });
         res.status(201).json({ msg: "new charge created", charge: charge });
     } catch (error) {
         console.log(error)
