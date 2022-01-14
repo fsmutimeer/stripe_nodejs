@@ -2,7 +2,8 @@ const router = require('express').Router();
 require('dotenv/config')
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.SK);
-
+const { v4: uuidv4 } = require('uuid');
+const uuid = require('uuid')
 
 router.get('/view', async(req, res) => {
     try {
@@ -30,14 +31,14 @@ router.post('/create', async(req, res) => {
         await stripe.customers.create({
             name: req.body.name,
             email: req.body.email
-        });
+        }, { idempotencyKey: "uuidv4()" });
         res.status(201).json({ msg: "new customer created" });
     } catch (error) {
         console.log(error)
 
     }
 });
-router.put('/update/:id', async(req, res) => {
+router.post('/update/:id', async(req, res) => {
     try {
         const customer = await stripe.customers.update(req.params.id, req.body);
         res.status(200).json({ msg: "customer updated", customer: customer });

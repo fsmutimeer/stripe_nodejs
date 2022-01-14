@@ -2,11 +2,12 @@ const router = require('express').Router();
 require('dotenv/config')
 const Stripe = require('stripe');
 const stripe = Stripe(process.env.SK);
+const { v4: uuidv4 } = require('uuid');
 
 
 router.post('/create', async(req, res) => {
     try {
-        const price = await stripe.prices.create(req.body);
+        const price = await stripe.prices.create(req.body, { idempotencyKey: uuidv4() });
         res.json(price);
     } catch (error) {
         console.log(error)

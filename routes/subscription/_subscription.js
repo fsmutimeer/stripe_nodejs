@@ -12,7 +12,15 @@ router.post('/create', async(req, res) => {
         //         { price: req.body.price },
         //     ],
         // });
-        const subscription = await stripe.subscriptions.create(req.body);
+        const subscribed = await stripe.subscriptions.retrieve(
+            req.body.customer
+        );
+        if (subscribed) {
+            return res.send('you have already subscribed')
+        }
+        const customer_id = req.body.customer;
+
+        const subscription = await stripe.subscriptions.create(req.body, { customer_id });
         res.json(subscription);
     } catch (error) {
         console.log(error)

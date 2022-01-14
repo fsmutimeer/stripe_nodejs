@@ -30,6 +30,7 @@ router.post('/create', async(req, res) => {
             currency: req.body.currency,
             source: req.body.source,
             description: req.body.description,
+            idempotencyKey: uuidv4()
         });
         res.status(201).json({ msg: "new charge created", charge: charge });
     } catch (error) {
